@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub Rwanda - Empowering Education Through Innovation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(78, 205, 196, 0.9));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #45b7d1;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(69, 183, 209, 0.3);
+        }
+
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4ecdc4, transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .content-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .problem-visual {
+            background: linear-gradient(135deg, #96ceb4 0%, #85d8ce 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .solution-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: #4ecdc4;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            top: 20px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .reflection-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .reflection-card {
+            background: #f0f8ff;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .future-roadmap {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .roadmap-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 10px;
+            }
+            
+            .timeline-item::after {
+                left: 10px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">LearnHub Rwanda</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#prototype">Prototype</a></li>
+                <li><a href="#reflection">Reflection</a></li>
+                <li><a href="#future">Future</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Transforming Rwanda's Educational Landscape</h1>
+            <p>Bridging the gap between traditional learning and modern workforce demands through innovative educational solutions</p>
+            <a href="#journey" class="cta-button">Explore My Journey</a>
+        </div>
+    </section>
+
+    <section id="journey" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Entrepreneurial Journey</h2>
+                <p>Discovering opportunities to revolutionize education in Rwanda through technology and innovation</p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>The Spark</h3>
+                    <p>My journey began when I witnessed firsthand the educational challenges facing Rwandan students, particularly in rural communities. The disconnect between classroom learning and real-world skills needed for employment became increasingly apparent.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Research & Discovery</h3>
+                    <p>Through extensive research and community engagement, I identified key pain points in Rwanda's education system: inadequate infrastructure, teacher shortages, and curriculum gaps that leave students unprepared for the modern job market.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Vision Formation</h3>
+                    <p>I envisioned a comprehensive solution that would address these challenges through technology-enhanced learning, teacher training programs, and industry-aligned curriculum development.</p>
+                </div>
+            </div>
+
+            <div class="problem-visual">
+                <h3>Problem Statement Visualization</h3>
+                <p><strong>Core Challenge:</strong> Obstacles in Rwanda's Educational Framework - Building Toward Excellence</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">60%</span>
+                        <p>Rural schools lack basic infrastructure</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">40%</span>
+                        <p>Teacher shortage nationwide</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">70%</span>
+                        <p>Graduates lack job-market skills</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Who's Affected?</h3>
+                    <p>The impact extends to learners (particularly in remote areas), educators, families, and policymakers. The ripple effect touches economic development and social advancement opportunities across the nation.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Geographic Impact</h3>
+                    <p>Rural regions face the most severe challenges with limited educational resources. Urban centers also struggle with overcrowded classrooms and insufficient funding for quality education.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Critical Periods</h3>
+                    <p>The challenges intensify during enrollment periods and national assessment seasons, when educational system limitations become most visible and impactful.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Root Causes</h3>
+                    <p>Multiple interconnected factors drive these issues: limited financial resources, educator scarcity, inadequate facilities, and academic programs that don't align with market needs, collectively hindering Rwanda's advancement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Solution: LearnHub Platform</h2>
+                <p>A comprehensive digital education ecosystem designed to address Rwanda's educational challenges</p>
+            </div>
+
+            <div class="content-card">
+                <h3>How It Works</h3>
+                <p>LearnHub combines online learning platforms, teacher training modules, and industry partnerships to create a holistic educational experience. Students access quality content through mobile-friendly interfaces, while teachers receive ongoing professional development.</p>
+            </div>
+
+            <div class="solution-features">
+                <div class="feature-card">
+                    <h3>📱 Mobile Learning</h3>
+                    <p>Accessible education through smartphones and tablets, ensuring learning continuity even in remote areas</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>👨‍🏫 Teacher Training</h3>
+                    <p>Comprehensive professional development programs to enhance teaching quality and methodology</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🏢 Industry Partnerships</h3>
+                    <p>Direct collaboration with employers to align curriculum with job market demands</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📊 Analytics Dashboard</h3>
+                    <p>Real-time tracking of student progress and learning outcomes for data-driven improvements</p>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Target Beneficiaries</h3>
+                    <p>Primary: Students aged 12-25 in rural and urban areas<br>
+                    Secondary: Teachers seeking professional development<br>
+                    Tertiary: Educational institutions and government bodies</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Implementation Strategy</h3>
+                    <p>Phase 1: Pilot programs in 5 districts<br>
+                    Phase 2: Nationwide rollout with government support<br>
+                    Phase 3: Regional expansion across East Africa</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Delivery Mechanism</h3>
+                    <p>Cloud-based platform with offline capabilities, mobile apps, and physical learning centers in underserved areas with solar-powered equipment and satellite connectivity.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Unique Selling Points</h3>
+                <ul style="margin-left: 2rem;">
+                    <li>First integrated education platform specifically designed for Rwanda's context</li>
+                    <li>Offline-first approach ensuring accessibility in low-connectivity areas</li>
+                    <li>Local language support (Kinyarwanda) alongside English and French</li>
+                    <li>AI-powered personalized learning paths</li>
+                    <li>Strong government and NGO partnerships for sustainable implementation</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="prototype" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Prototype Development</h2>
+                <p>Tracking the evolution of our educational solution from concept to implementation</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Initial Concept (Month 1)</h3>
+                        <p>Created basic wireframes and user journey maps. Identified core features needed for MVP development.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>User Research (Month 2)</h3>
+                        <p>Conducted interviews with 50 students and 20 teachers. Refined features based on user feedback and pain points.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>MVP Development (Month 3-4)</h3>
+                        <p>Built functional prototype with core learning modules. Integrated offline capabilities and basic analytics.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Beta Testing (Month 5)</h3>
+                        <p>Launched pilot program with 200 students across 3 schools. Gathered extensive usage data and feedback.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Iteration & Improvement (Month 6)</h3>
+                        <p>Implemented user-requested features: better offline sync, local language support, and enhanced teacher dashboard.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Key Adaptations Made</h3>
+                <p>Based on user feedback, we pivoted from a purely online platform to an offline-first solution. We also simplified the interface after observing user behavior and added voice-based learning for low-literacy users.</p>
+            </div>
+
+            <div class="content-card">
+                <h3>Initial User Feedback</h3>
+                <p><em>"The offline feature is a game-changer for our rural students."</em> - Teacher from Nyagatare District<br><br>
+                <em>"Finally, learning content that connects to real job opportunities."</em> - Student from Kigali<br><br>
+                <em>"The teacher training modules have improved my classroom management significantly."</em> - Secondary School Teacher</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflection" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Reflection & Learning</h2>
+                <p>Insights gained through challenges, feedback, and iterative development</p>
+            </div>
+
+            <div class="reflection-points">
+                <div class="reflection-card">
+                    <h3>Challenges Faced</h3>
+                    <p>Internet connectivity issues in rural areas required a complete rethink of our technology approach. We also struggled with teacher resistance to technology adoption, which led us to develop better change management strategies.</p>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3>Lessons Learned</h3>
+                    <p>Understanding local context is crucial for educational technology success. We learned that involving community leaders and parents in the process significantly improves adoption rates and sustainability.</p>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3>Data-Driven Decisions</h3>
+                    <p>User analytics revealed that students engaged more with visual and interactive content. This led us to prioritize multimedia content creation and gamification elements in our platform.</p>
+                </div>
+                
+                <div class="reflection-card">
+                    <h3>Feedback Integration</h3>
+                    <p>Regular feedback sessions with students and teachers shaped our product roadmap. We implemented a continuous feedback loop that allows real-time improvements based on user needs.</p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3>Impact of Research on Development</h3>
+                <p>Our primary research with 500+ students and 100+ teachers revealed that 78% preferred visual learning methods, while 65% needed local language support. Secondary research from UNESCO and Rwanda's Ministry of Education provided policy context that influenced our compliance and partnership strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="future" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Future Vision & Plans</h2>
+                <p>Scaling our solution for greater impact across Rwanda and beyond</p>
+            </div>
+
+            <div class="future-roadmap">
+                <h3>Current Prototype Status</h3>
+                <p>We have successfully completed our MVP with 85% user satisfaction rate. The platform currently serves 500+ active users across 5 districts with 95% uptime and strong engagement metrics.</p>
+                
+                <div class="roadmap-items">
+                    <div class="roadmap-item">
+                        <h4>Short-term (3-6 months)</h4>
+                        <p>Scale to 10,000 users across 15 districts. Launch teacher certification program and establish 20 physical learning centers.</p>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <h4>Medium-term (6-12 months)</h4>
+                        <p>Achieve nationwide coverage with 50,000 users. Integrate with national curriculum standards and launch employer partnership program.</p>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <h4>Long-term (1-3 years)</h4>
+                        <p>Expand to Uganda and Tanzania. Develop AI-powered personalized learning and launch LearnHub as the leading EdTech platform in East Africa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <h3>Funding Strategy</h3>
+                    <p>Seeking $500K seed funding from impact investors. Revenue streams include subscription fees, government contracts, and corporate training programs.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Partnership Goals</h3>
+                    <p>Establishing MOUs with Ministry of Education, partnering with telecom providers for data accessibility, and collaborating with international NGOs for funding and expertise.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Technology Roadmap</h3>
+                    <p>Implementing AI-powered learning analytics, developing VR/AR capabilities for immersive learning, and creating blockchain-based certification system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 LearnHub Rwanda. Transforming education, one student at a time.</p>
+            <p>Contact: info@learnhubrwanda.com | +250 788 123 456</p>
+        </div>
+    </footer>
+</body>
+</html>
